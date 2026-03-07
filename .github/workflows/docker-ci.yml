@@ -5,7 +5,6 @@ on:
     branches: [ main ]
 
 jobs:
-
   build:
 
     runs-on: ubuntu-latest
@@ -15,27 +14,22 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.10
-
+        python-version: "3.10"
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
-
+        pip install -r root/requirements.txt
 
     - name: Run tests
       run: |
         pytest
 
-
     - name: Build Docker Image
       run: |
-        docker build -t lr-devops-app .
-
+        docker build -t lr-devops-app ./root
 
     - name: Run Docker Container
       run: |
