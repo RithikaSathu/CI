@@ -20,16 +20,13 @@ jobs:
         python-version: "3.10"
 
     - name: Install dependencies
-      run: |
-        pip install -r root/requirements.txt
+      run: pip install -r root/requirements.txt
 
     - name: Run tests
       run: pytest
 
     - name: Build Docker Image
-      run: |
-        docker build -t lr-devops-app ./root
+      run: docker build -t lr-devops-app ./root
 
     - name: Run Docker Container
-      run: |
-        docker run lr-devops-app
+      run: docker run lr-devops-app
